@@ -1,0 +1,31 @@
+/*****************************************************************************
+ *
+ *  PROJECT:     Multi Theft Auto
+ *               (Shared logic for modifications)
+ *  LICENSE:     See LICENSE in the top level directory
+ *  FILE:        mods/shared_logic/luadefs/CLuaRadarAreaDefs.h
+ *  PURPOSE:     Lua radar area definitions class header
+ *
+ *****************************************************************************/
+
+#pragma once
+#include "CLuaDefs.h"
+
+class CClientRadarArea;
+
+class CLuaRadarAreaDefs : public CLuaDefs
+{
+public:
+    static void LoadFunctions();
+    static void AddClass(lua_State* luaVM);
+
+    LUA_DECLARE(CreateRadarArea);
+    LUA_DECLARE(GetRadarAreaColor);
+    LUA_DECLARE(GetRadarAreaSize);
+    static std::variant<CLuaMultiReturn<float, float>, CVector2D, bool> OOP_GetRadarAreaSize(lua_State* luaVM, CClientRadarArea* radarArea);
+    LUA_DECLARE(IsRadarAreaFlashing);
+    LUA_DECLARE(SetRadarAreaColor);
+    LUA_DECLARE(SetRadarAreaFlashing);
+    LUA_DECLARE(SetRadarAreaSize);
+    LUA_DECLARE(IsInsideRadarArea);
+};
